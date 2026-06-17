@@ -56,14 +56,6 @@
     drawChip(ctx, altOne, 94, 1369, 260);
     drawChip(ctx, altTwo, 374, 1369, 260);
 
-    ctx.fillStyle = "#f9dd5a";
-    roundRect(ctx, 94, 1482, width - 188, 58, 18);
-    ctx.fill();
-    ctx.strokeStyle = "#151515";
-    ctx.stroke();
-    ctx.fillStyle = "#151515";
-    drawText(ctx, "准不准不重要，先看看哪家公司最会使用你。", 126, 1520, 23, 900, width - 252, 32);
-
     try {
       drawShareBar(ctx, await loadImage(qrUrl));
     } catch (error) {
