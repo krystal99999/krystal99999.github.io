@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>你是哪家互联网大厂的天选打工人？</title>
-    <link rel="stylesheet" href="./styles.css?v=20260617-1">
+    <link rel="stylesheet" href="./styles.css?v=20260617-2">
   </head>
   <body>
     <main class="app-shell">
@@ -49,7 +49,7 @@
       <section class="screen screen-result" id="result-screen">
         <div class="result-hero" id="result-hero">
           <div class="persona-copy">
-            <span>你的结果</span>
+            <span>我的厂格结果</span>
             <h2 id="persona-title"></h2>
             <p id="persona-subtitle"></p>
           </div>
@@ -64,22 +64,29 @@
             <p class="folk-label" id="chosen-reason"></p>
           </article>
           <article class="card company-card warning-pick">
-            <span class="section-label">不建议硬闯</span>
-            <h2 id="warning-company-name"></h2>
-            <p class="company-persona" id="warning-company-text"></p>
+            <span class="section-label">避雷公司</span>
+            <div class="warning-list">
+              <div class="warning-item">
+                <h2 id="warning-company-name"></h2>
+                <p class="company-persona" id="warning-company-text"></p>
+              </div>
+              <div class="warning-item">
+                <h2 id="warning-two-name"></h2>
+                <p class="company-persona" id="warning-two-text"></p>
+              </div>
+            </div>
           </article>
         </div>
 
-        <blockquote class="main-verdict" id="roast"></blockquote>
-
-        <article class="card deal-card">
+        <blockquote class="main-verdict hidden" id="roast"></blockquote>
+        <article class="card deal-card hidden">
           <span class="section-label">这份工作划不划算</span>
           <p id="deal-text"></p>
         </article>
 
         <article class="card report-card">
           <div class="report-section">
-            <span class="section-label">为什么是你</span>
+            <span class="section-label">具体原因</span>
             <h3>欣赏你的地方</h3>
             <p id="liked-text"></p>
           </div>
@@ -90,7 +97,7 @@
           </div>
           <div class="report-section danger">
             <span class="section-label">提前说清</span>
-            <h3>你可能受不了的地方</h3>
+            <h3>需要注意的地方</h3>
             <p id="tortured-text"></p>
           </div>
         </article>
@@ -119,10 +126,10 @@
       </section>
     </main>
 
-    <script src="../data/companies.js?v=20260617-1"></script>
-    <script src="../data/company-overrides.js?v=20260617-1"></script>
-    <script src="../data/questions.js?v=20260617-1"></script>
-    <script src="./app.js?v=20260617-1"></script>
-    <script src="./behavior-overrides.js?v=20260617-1"></script>
+    <script src="../data/companies.js?v=20260617-2"></script>
+    <script src="../data/company-overrides.js?v=20260617-2"></script>
+    <script src="../data/questions.js?v=20260617-2"></script>
+    <script src="./app.js?v=20260617-2"></script>
+    <script src="./result-overrides-20260617-2.js"></script>
   </body>
 </html>
