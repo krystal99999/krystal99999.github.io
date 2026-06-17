@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>你是哪家互联网大厂的天选打工人？</title>
+    <link rel="stylesheet" href="./styles.css?v=20260617-7">
+    <link rel="stylesheet" href="./mobile-overrides-20260617-4.css">
+    <style>
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="screen screen-home is-active" id="home-screen">
+        <div class="pill">毒舌但尽量有道理，仅供娱乐</div>
+        <div class="hero">
+          <p class="kicker">15 道题测出你的大厂命格</p>
+          <h1>你是哪家互联网大厂的天选打工人？</h1>
+          <p class="subtitle">测测你最容易被哪家大厂一眼相中。</p>
+          <p class="subnote">是命运的安排，也可能是病友的双向奔赴。发光还是发疯？测一测就知道。</p>
+        </div>
+        <div class="hook-list" aria-label="测试看点">
+          <span>神仙公司在哪</span>
+          <span>隐藏卷王竟是你</span>
+          <span>天选牛马？</span>
+        </div>
+        <div class="stats-grid" aria-label="测试信息">
+          <div><strong>20</strong><span>家公司画像</span></div>
+          <div><strong>15</strong><span>道职场选择题</span></div>
+        </div>
+        <button class="primary-action" id="start-button" type="button">开始鉴定我的厂格</button>
+        <button class="secondary-action hidden" id="last-result-button" type="button">查看上次结果</button>
+      </section>
+
+      <section class="screen screen-quiz" id="quiz-screen">
+        <div class="progress-meta">
+          <span id="question-count"></span>
+          <span id="progress-text"></span>
+        </div>
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+        <article class="card question-card">
+          <h2 id="question-title"></h2>
+          <p class="question-hint">没有完全合适也正常，选最接近你真实第一反应的那个。</p>
+          <div class="options" id="options"></div>
+        </article>
+        <div class="quiz-actions">
+          <button class="secondary-action" id="prev-button" type="button">上一题</button>
+          <button class="primary-action" id="next-button" type="button">跳过自动等待</button>
+        </div>
+      </section>
+
+      <section class="screen screen-result" id="result-screen">
+        <div class="result-hero" id="result-hero">
+          <div class="persona-copy">
+            <span>我的厂格结果</span>
+            <h2 id="persona-title"></h2>
+            <p id="persona-subtitle"></p>
+          </div>
+          <div class="persona-sticker" id="persona-sticker" aria-hidden="true"></div>
+        </div>
+
+        <div class="match-grid result-duel">
+          <article class="card company-card">
+            <span class="section-label">天选公司</span>
+            <h2 id="company-name"></h2>
+            <p class="company-persona" id="company-persona"></p>
+            <p class="folk-label" id="chosen-reason"></p>
+          </article>
+          <article class="card company-card warning-pick">
+            <span class="section-label">避雷公司</span>
+            <div class="warning-list">
+              <div class="warning-item">
+                <h2 id="warning-company-name"></h2>
+                <p class="company-persona" id="warning-company-text"></p>
+              </div>
+              <div class="warning-item">
+                <h2 id="warning-two-name"></h2>
+                <p class="company-persona" id="warning-two-text"></p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <blockquote class="main-verdict hidden" id="roast"></blockquote>
+        <article class="card deal-card hidden">
+          <span class="section-label">这份工作划不划算</span>
+          <p id="deal-text"></p>
+        </article>
+
+        <article class="card report-card">
+          <div class="report-section">
+            <span class="section-label">具体原因</span>
+            <h3>欣赏你的地方</h3>
+            <p id="liked-text"></p>
+          </div>
+          <div class="report-section">
+            <span class="section-label">适合你的地方</span>
+            <h3>你会喜欢的地方</h3>
+            <p id="stay-text"></p>
+          </div>
+          <div class="report-section danger">
+            <span class="section-label">提前说清</span>
+            <h3>需要注意的地方</h3>
+            <p id="tortured-text"></p>
+          </div>
+        </article>
+
+        <div class="match-grid">
+          <article class="card mini-card">
+            <span>另外也适合你</span>
+            <h3 id="alt-one-name"></h3>
+            <p id="alt-one-text"></p>
+          </article>
+          <article class="card mini-card">
+            <span>另外也适合你</span>
+            <h3 id="alt-two-name"></h3>
+            <p id="alt-two-text"></p>
+          </article>
+        </div>
+
+        <p class="disclaimer">本测试基于公开口碑、大众印象和常见职场讨论创作；不同部门、岗位和老板差异很大，仅供娱乐参考，不代表真实招聘标准。</p>
+        <button class="primary-action" id="image-button" type="button">生成可保存结果图</button>
+        <div class="share-preview hidden" id="share-preview">
+          <p>结果图已生成。手机上可以长按图片保存，电脑上可以点下载。</p>
+          <img id="result-image" alt="测试结果图">
+          <a class="download-link" id="download-link" download="大厂职场人格测试结果.png">下载结果图</a>
+        </div>
+        <button class="primary-action" id="restart-button" type="button">重新测试</button>
+      </section>
+    </main>
+
+    <script src="../data/companies.js?v=20260617-7"></script>
+    <script src="../data/company-overrides.js?v=20260617-5"></script>
+    <script src="../data/questions.js?v=20260617-7"></script>
+    <script src="../data/question-text-overrides-20260617-3.js"></script>
+    <script src="./app.js?v=20260617-7"></script>
+    <script src="./result-image-overrides-20260617-6.js"></script>
+    <script src="./result-overrides-20260617-3.js"></script>
+  </body>
+</html>
